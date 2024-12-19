@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Mapper from "./Mapper";
+import MapperTwo from "./MapperTwo";
 
 const MainPage = () => {
   function sendStates(stateObject) {}
@@ -8,7 +8,7 @@ const MainPage = () => {
     <div>
       <Router>
         <Routes>
-          <Route path="/" element={<Mapper sendStates={sendStates} />} />
+          <Route path="/" element={<MapperTwo sendStates={sendStates} />} />
         </Routes>
       </Router>
     </div>

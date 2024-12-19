@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import "../src/css/styleit.css";
 import "../src/css/tailwind.css";
+import "../src/leaflet/leaflet.css";
 import {
   datemap,
   clg,

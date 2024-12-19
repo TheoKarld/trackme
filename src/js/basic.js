@@ -396,6 +396,18 @@ var icon2 = (v, i, c, at) => {
   if (at) attme(a, at);
   return a;
 };
+function but(v, t, id, c, ro) {
+  var d = $$$("button", id, c);
+  attme(d, ro);
+  d.type = t;
+  if (typeof v == "string") {
+    d.innerHTML = v;
+  } else {
+    for (var i in v) APP(d, v[i]);
+  }
+  return d;
+}
+
 function addclass(e, c) {
   e.className = claz(e) ? claz(e) + " " + c : c;
 }
@@ -520,6 +532,57 @@ function Js(o) {
 function js(o) {
   return JSON.stringify(o);
 }
+function addEvent(el, type, fn) {
+  var add = function (el) {
+    if (window.addEventListener) {
+      el.addEventListener(type, fn, false);
+    } else if (window.attachEvent) {
+      el.attachEvent("on" + type, fn);
+    }
+  };
+  add(el);
+}
+function apx(n, c) {
+  /*1.0*/
+  if (n.length == c) return n;
+  var a = n,
+    b = n.length,
+    w,
+    x,
+    y,
+    z;
+  for (var i = 0; i < b; i++) {
+    w = parseInt(a.charAt(a.length - 1));
+    a = a.slice(0, a.length - 1);
+    if (w >= 5) {
+      x = a.charAt(a.length - 1);
+      a = a.slice(0, a.length - 1) + (parseInt(x) + 1);
+    }
+    if (a.length == c) break;
+  }
+  return a;
+}
+function rnd(f, r) {
+  if (!f) return "";
+  var s = f.toString(),
+    w = isfra(f),
+    x,
+    y,
+    z;
+  if (!w) return f;
+  s = s.split(".");
+  x = apx(s[1], r);
+  x = apx(x, r);
+  return parseFloat(s[0] + "." + x);
+}
+function isfra(n) {
+  var r = false;
+  n = n.toString();
+  if (n.indexOf(".") > 0) {
+    r = true;
+  }
+  return r;
+}
 
 export {
   datemap,
@@ -532,6 +595,10 @@ export {
   cleaname,
   addclass,
   claz,
+  DIV,
+  feedme,
+  but,
+  addEvent,
   rootstyle,
   cleantxt,
   joinus,
@@ -540,6 +607,7 @@ export {
   sup,
   sub,
   ee,
+  rnd,
   cta,
   cto,
   clonea,
